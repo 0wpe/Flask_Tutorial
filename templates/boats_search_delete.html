@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Search and Delete Boat</h1>
+
+<form method="POST" action="/search_delete">
+    <input type="number" name="boat_id" placeholder="Enter Boat ID" required>
+    <button type="submit">Search</button>
+</form>
+
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+{% if boat %}
+    <h2>Boat Found:</h2>
+    <p><strong>ID:</strong> {{ boat.id }}</p>
+    <p><strong>Name:</strong> {{ boat.name }}</p>
+    <p><strong>Type:</strong> {{ boat.type }}</p>
+    <p><strong>Owner ID:</strong> {{ boat.owner_id }}</p>
+    <p><strong>Rental Price:</strong> {{ boat.rental_price }}</p>
+
+    <!-- Delete confirmation -->
+    <form method="POST" action="/search_delete">
+        <input type="hidden" name="boat_id" value="{{ boat.id }}">
+        <button type="submit" name="delete">Delete</button>
+    </form>
+{% endif %}
+
+{% if success %}
+    <p style="color:green;">{{ success }}</p>
+{% endif %}
+
+<a href="/boats">Back to Boats</a>
+{% endblock %}

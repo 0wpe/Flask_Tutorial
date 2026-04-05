@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Boat Details</h1>
+
+{% if boat %}
+    <p><strong>ID:</strong> {{ boat.id }}</p>
+    <p><strong>Name:</strong> {{ boat.name }}</p>
+    <p><strong>Type:</strong> {{ boat.type }}</p>
+    <p><strong>Owner ID:</strong> {{ boat.owner_id }}</p>
+    <p><strong>Rental Price:</strong> {{ boat.rental_price }}</p>
+{% else %}
+    <p>Boat not found.</p>
+{% endif %}
+
+<a href="/search">Back to Search</a>
+{% endblock %}

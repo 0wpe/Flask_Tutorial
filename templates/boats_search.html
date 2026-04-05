@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block body %}
+    <form method="POST" action="/search">
+        <label>ID:</label>
+        <input type="number" name="id_filter" placeholder="Enter Boat ID" value="{{ id_filter or '' }}">
+
+        <label>Name:</label>
+        <input type="text" name="search_term" placeholder="Enter name" value="{{ search_term or '' }}">
+
+        <label>Type:</label>
+        <select name="type_filter">
+            <option value="">All Types</option>
+            <option value="house" {% if type_filter=='house' %}selected{% endif %}>House</option>
+            <option value="sail" {% if type_filter=='sail' %}selected{% endif %}>Sail</option>
+            <option value="speed" {% if type_filter=='speed' %}selected{% endif %}>Speed</option>
+            <option value="yacht" {% if type_filter=='yacht' %}selected{% endif %}>Yacht</option>
+        </select>
+
+        <label>Price Range:</label>
+        <input type="number" name="min_price" placeholder="Min Price" value="{{ min_price or '' }}">
+        <input type="number" name="max_price" placeholder="Max Price" value="{{ max_price or '' }}">
+
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+        <h2>Results:</h2>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Owner ID</th>
+                <th>Rental Price</th>
+            </tr>
+
+            {% for boat in results %}
+            <tr onclick="window.location='/boats/{{ boat.id }}'" style="cursor:pointer;">
+                <td>{{ boat.id }}</td>
+                <td>{{ boat.name }}</td>
+                <td>{{ boat.type }}</td>
+                <td>{{ boat.owner_id }}</td>
+                <td>{{ boat.rental_price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

@@ -2,131 +2,87 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/header.css') }}">
-    <title>My site</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/header.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>My Boat Site</title>
   </head>
 
   <body>
     <header>
       <div class="topBar">
-        <div class="">
-          <img src="{{url_for('static',filename = 'images/logo.jpg')}}" alt="Logo" class="logo">
-          <ul class="barItem">
-
-            <li><a href="/">HOME</a></li>
-            <li><a href="/boats">BOATS</a></li>
-            <li><a href="/create">CREATE BOATS</a></li>
-            <li><a href="/delete">DELETE BOATS</a></li>
+        <div class="logoNav">
+          <img src="{{url_for('static',filename='images/logo.jpg')}}" alt="Logo" class="logo">
+          <ul class="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/boats">Boats</a></li>
+            <li><a href="/search">Search Boats</a></li>
+            <li><a href="/search_delete">Search & Delete</a></li>
+            <li><a href="/create">Add Boat</a></li>
+            <li><a href="/delete">Delete Boat</a></li>
           </ul>
         </div>
 
-        <div class="formSection barItem">
-          <form class="barItem" action="" method="post">
-            <input type="text" name="uid" value="" placeholder="E-mail" required>
-            <input type="password" name="pass" value="" placeholder="Password" required>
-            <input type="submit" name="loginButton" value="LOGIN">
+        <div class="formSection">
+          <form action="" method="post">
+            <input type="text" name="uid" placeholder="E-mail" required>
+            <input type="password" name="pass" placeholder="Password" required>
+            <button type="submit">Login</button>
           </form>
-
-          <button class="barItem input" style="margin-left:10px;">
-            <a href="#">SIGNUP</a>
-          </button>
+          <a href="#" class="signup-button">Sign Up</a>
         </div>
-
       </div>
     </header>
 
-    {% block body %}
-    {% endblock %}
-    
+    <main class="container">
+      {% block body %}
+      {% endblock %}
+    </main>
+
     <footer class="footer">
-      <div class="footer__addr">
-        <h1 class="footer__logo">A very cool looking footer!</h1>
+      <div class="footer__logo">A very cool looking footer!</div>
 
+      <div class="footer__contact">
         <h2>Contact</h2>
-
         <address>
           5534 Somewhere In. The World 22193-10212<br>
-
-          <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
+          <a href="mailto:example@gmail.com">Email Us</a>
         </address>
       </div>
 
-      <ul class="footer__nav">
-        <li class="nav__item">
-          <h2 class="nav__title">Media</h2>
-
-          <ul class="nav__ul">
-            <li>
-              <a href="#">Online</a>
-            </li>
-
-            <li>
-              <a href="#">Print</a>
-            </li>
-
-            <li>
-              <a href="#">Alternative Ads</a>
-            </li>
+      <div class="footer__nav">
+        <div>
+          <h3>Media</h3>
+          <ul>
+            <li><a href="#">Online</a></li>
+            <li><a href="#">Print</a></li>
+            <li><a href="#">Alternative Ads</a></li>
           </ul>
-        </li>
-
-        <li class="nav__item nav__item--extra">
-          <h2 class="nav__title">Technology</h2>
-
-          <ul class="nav__ul nav__ul--extra">
-            <li>
-              <a href="#">Hardware Design</a>
-            </li>
-
-            <li>
-              <a href="#">Software Design</a>
-            </li>
-
-            <li>
-              <a href="#">Digital Signage</a>
-            </li>
-
-            <li>
-              <a href="#">Automation</a>
-            </li>
-
-            <li>
-              <a href="#">Artificial Intelligence</a>
-            </li>
-
-            <li>
-              <a href="#">IoT</a>
-            </li>
+        </div>
+        <div>
+          <h3>Technology</h3>
+          <ul>
+            <li><a href="#">Hardware Design</a></li>
+            <li><a href="#">Software Design</a></li>
+            <li><a href="#">Digital Signage</a></li>
+            <li><a href="#">Automation</a></li>
+            <li><a href="#">Artificial Intelligence</a></li>
+            <li><a href="#">IoT</a></li>
           </ul>
-        </li>
-
-        <li class="nav__item">
-          <h2 class="nav__title">Legal</h2>
-
-          <ul class="nav__ul">
-            <li>
-              <a href="#">Privacy Policy</a>
-            </li>
-
-            <li>
-              <a href="#">Terms of Use</a>
-            </li>
-
-            <li>
-              <a href="#">Sitemap</a>
-            </li>
+        </div>
+        <div>
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Sitemap</a></li>
           </ul>
-        </li>
-      </ul>
-
-      <div class="legal">
-        <p>&copy; 2019 Something. All rights reserved.</p>
-
-        <div class="legal__links">
-          <span>Made with <span class="heart">♥</span> remotely from Anywhere</span>
         </div>
       </div>
-    </footer>
 
+      <div class="footer__bottom">
+        <p>&copy; 2026 My Boat Site. All rights reserved.</p>
+        <span>Made with ♥ remotely from Anywhere</span>
+      </div>
+    </footer>
   </body>
 </html>
